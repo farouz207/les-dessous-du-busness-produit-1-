@@ -53,21 +53,31 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateTimer, 1000);
   }
 
-  // 3. ACCORDÉON FAQ INTERACTIF
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const questionBtn = item.querySelector('.faq-question');
-    questionBtn.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
+  // 3. ACCORDÉON FAQ INTERACTIF & ACCESSIBLE
+  const faqPanels = document.querySelectorAll('.faq-panel, .faq-item');
+  faqPanels.forEach(panel => {
+    const triggerBtn = panel.querySelector('.faq-trigger-btn, .faq-question');
+    if (triggerBtn) {
+      triggerBtn.addEventListener('click', () => {
+        const isActive = panel.classList.contains('active');
 
-      // Fermer tous les autres items
-      faqItems.forEach(other => other.classList.remove('active'));
+        // Fermer tous les autres panneaux
+        faqPanels.forEach(other => {
+          other.classList.remove('active');
+          const otherBtn = other.querySelector('.faq-trigger-btn, .faq-question');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        });
 
-      // Basculer l'item actuel
-      if (!isActive) {
-        item.classList.add('active');
-      }
-    });
+        // Basculer l'état du panneau actuel
+        if (!isActive) {
+          panel.classList.add('active');
+          triggerBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          panel.classList.remove('active');
+          triggerBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
   });
 
   // 4. NOTIFICATIONS SOCIAL PROOF (Commandes récentes en direct)
