@@ -1331,10 +1331,27 @@ h1, h2, h3, h4, .serif-font {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN ADAPTATIF (TABLETTE & MOBILE)
+   RESPONSIVE DESIGN ULTRA-OPTIMISÉ (MOBILE, TABLETTE, DESKTOP)
+   Résout les débordements, empilements étroits et lisibilité tactile
    ========================================================================== */
 
-/* Tablette (max-width: 1024px) */
+/* Sécurité anti-débordement horizontal */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+
+.page-content, main, section, .hero-section {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 1. TABLETTE (max-width: 1024px) */
 @media (max-width: 1024px) {
   .hero-grid-layout {
     grid-template-columns: 1fr;
@@ -1348,7 +1365,7 @@ h1, h2, h3, h4, .serif-font {
   }
 
   .hero-pillars-grid {
-    max-width: 600px;
+    max-width: 620px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1358,18 +1375,31 @@ h1, h2, h3, h4, .serif-font {
   }
 
   .hero-visual-wrapper {
-    max-width: 480px;
+    max-width: 420px;
     margin: 0 auto;
+  }
+
+  .hero-floating-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -18px;
+    width: max-content;
+    max-width: 90%;
   }
 
   .speaker-story-grid {
     grid-template-columns: 1fr;
-    gap: 44px;
+    gap: 40px;
+    text-align: center;
   }
 
   .speaker-image-frame {
-    max-width: 500px;
+    max-width: 460px;
     margin: 0 auto;
+  }
+
+  .quote-highlight-box {
+    text-align: left;
   }
 
   .testimonials-grid {
@@ -1377,112 +1407,495 @@ h1, h2, h3, h4, .serif-font {
   }
 }
 
-/* Mobile & Petit Écran (max-width: 768px) */
+/* 2. PETITE TABLETTE & GRANDS MOBILES (max-width: 768px) */
 @media (max-width: 768px) {
+  /* En-tête */
+  .main-header {
+    padding: 12px 0;
+  }
+
   .nav-desktop-menu {
     display: none;
   }
 
   .header-cta-desktop {
-    display: none;
+    display: inline-flex;
+    padding: 9px 16px;
+    font-size: 0.8rem;
   }
 
-  .mobile-nav-toggle {
-    display: flex;
+  .brand-title-top {
+    font-size: 1.02rem;
   }
 
+  .brand-title-bottom {
+    font-size: 0.62rem;
+    letter-spacing: 1.8px;
+  }
+
+  /* Bandeau supérieur d'urgence */
+  .top-announcement {
+    padding: 8px 12px;
+    font-size: 0.78rem;
+  }
+
+  .top-announcement-inner {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .top-badge-pulse {
+    font-size: 0.68rem;
+    padding: 2px 7px;
+  }
+
+  .top-countdown-box {
+    font-size: 0.76rem;
+    padding: 2px 10px;
+  }
+
+  /* Hero Section */
   .hero-section {
-    padding-top: 32px;
+    padding: 28px 0 44px;
+  }
+
+  .hero-tag-wrap {
+    margin-bottom: 14px;
+  }
+
+  .hero-pill-badge {
+    font-size: 0.72rem;
+    padding: 5px 12px;
   }
 
   .hero-main-title {
-    font-size: 2.35rem;
+    font-size: clamp(2rem, 7vw, 2.7rem);
+    line-height: 1.12;
+    margin-bottom: 16px;
+    word-break: normal;
   }
 
+  .hero-lead-text {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  /* 3 Piliers réorganisés sous forme de fiches lisibles */
   .hero-pillars-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
-    text-align: left;
+    gap: 10px;
+    padding: 14px 0;
+    margin-bottom: 24px;
   }
 
   .pillar-item {
     flex-direction: row;
     align-items: center;
-  }
-
-  .contrast-dual-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .curriculum-card {
-    grid-template-columns: 1fr;
     gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    text-align: left;
   }
 
-  .curriculum-num {
-    font-size: 2.2rem;
+  .pillar-icon-box {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    flex-shrink: 0;
   }
 
-  .testimonials-grid {
-    grid-template-columns: 1fr;
+  .pillar-label {
+    font-size: 0.9rem;
+  }
+
+  /* Bouton d'action principal */
+  .hero-action-block .btn-conversion {
+    width: 100%;
+    padding: 18px 20px;
+    font-size: 1.02rem;
+  }
+
+  .hero-trust-bar {
+    justify-content: center;
+    font-size: 0.76rem;
+  }
+
+  .payment-chips {
+    justify-content: center;
+  }
+
+  /* Visuel Affiche & Badge Flottant */
+  .hero-visual-wrapper {
+    max-width: 320px;
+    margin: 10px auto 0;
+  }
+
+  .hero-poster-card {
+    border-radius: var(--radius-md);
+  }
+
+  .hero-floating-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -16px;
+    width: max-content;
+    max-width: 94%;
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  .floating-badge-icon {
+    font-size: 1.3rem;
+  }
+
+  .floating-badge-content strong {
+    font-size: 0.85rem;
+  }
+
+  .floating-badge-content span {
+    font-size: 0.7rem;
+  }
+
+  /* Grille des Statistiques */
+  .proof-stats-strip {
+    padding: 24px 0;
   }
 
   .stats-grid-row {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 12px;
+  }
+
+  .stat-box {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 14px 10px;
+  }
+
+  .stat-box h3 {
+    font-size: 1.55rem;
+    margin-bottom: 2px;
+  }
+
+  .stat-box p {
+    font-size: 0.75rem;
+  }
+
+  /* Section Avant vs Après */
+  .section-contrast {
+    padding: 48px 0;
+  }
+
+  .contrast-dual-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+
+  .contrast-box {
+    padding: 22px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .contrast-badge {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+  }
+
+  .contrast-points-list {
+    gap: 12px;
+  }
+
+  .contrast-point-item {
+    font-size: 0.88rem;
+    gap: 10px;
+  }
+
+  /* Section Programme (Modules) */
+  .section-curriculum {
+    padding: 48px 0;
+  }
+
+  .curriculum-cards-stack {
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .curriculum-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 16px;
+    gap: 10px;
+  }
+
+  .curriculum-num {
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    font-weight: 800;
+    background: rgba(47, 168, 85, 0.16);
+    border: 1px solid rgba(47, 168, 85, 0.4);
+    color: var(--accent-green-neon);
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+  }
+
+  .curriculum-body h3 {
+    font-size: 1.12rem;
+    margin-bottom: 6px;
+  }
+
+  .curriculum-body p {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  /* Section Auteur / Présentateur */
+  .section-speaker-story {
+    padding: 48px 0;
+  }
+
+  .speaker-image-frame {
+    max-width: 320px;
+    margin: 0 auto;
+    border-radius: var(--radius-md);
+  }
+
+  .speaker-card-overlay {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 12px 14px;
+  }
+
+  .speaker-card-overlay h4 {
+    font-size: 1.05rem;
+  }
+
+  .speaker-card-overlay p {
+    font-size: 0.72rem;
+  }
+
+  .speaker-story-text h2 {
+    font-size: 1.85rem;
+    margin-bottom: 14px;
+  }
+
+  .speaker-story-text p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .quote-highlight-box {
+    font-size: 0.98rem;
+    padding: 12px 16px;
+    margin: 20px 0;
+  }
+
+  /* Section Témoignages */
+  .section-testimonials {
+    padding: 48px 0;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .testimonial-card {
+    padding: 20px 16px;
+  }
+
+  .testimonial-quote {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  /* Section Offre & Boîte de Commande */
+  .section-conversion-box {
+    padding: 56px 0;
   }
 
   .grand-offer-card {
-    padding: 44px 18px 36px;
+    padding: 36px 14px 28px;
     border-radius: var(--radius-lg);
   }
 
+  .offer-ribbon-top {
+    font-size: 0.7rem;
+    padding: 5px 14px;
+    width: max-content;
+    max-width: 92%;
+    top: -14px;
+  }
+
+  .offer-card-title {
+    font-size: 1.95rem;
+    line-height: 1.15;
+    margin-top: 6px;
+  }
+
+  .offer-card-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 22px;
+  }
+
+  .value-stack-list {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
   .value-stack-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px;
+    gap: 10px;
+  }
+
+  .value-stack-left {
+    font-size: 0.85rem;
+    gap: 10px;
   }
 
   .value-price-tag {
-    align-self: flex-end;
+    font-size: 0.78rem;
+    flex-shrink: 0;
   }
 
+  .price-spotlight-box {
+    margin: 24px 0 18px;
+  }
+
+  .price-numbers-row {
+    gap: 8px;
+  }
+
+  .price-original-striked {
+    font-size: 1.25rem;
+  }
+
+  .price-highlight-huge {
+    font-size: clamp(2.8rem, 11vw, 3.8rem);
+  }
+
+  .price-unit-currency {
+    font-size: 1.1rem;
+  }
+
+  .price-note-clarity {
+    font-size: 0.8rem;
+  }
+
+  .grand-offer-card .btn-conversion {
+    width: 100%;
+    padding: 18px 16px;
+    font-size: 1.05rem;
+  }
+
+  .offer-guarantee-pill {
+    font-size: 0.78rem;
+    padding: 6px 12px;
+    margin-top: 18px;
+    text-align: center;
+    line-height: 1.35;
+  }
+
+  /* Section FAQ */
+  .section-faq {
+    padding: 48px 0;
+  }
+
+  .faq-trigger-btn {
+    padding: 16px 16px;
+    font-size: 0.95rem;
+    gap: 12px;
+  }
+
+  .faq-icon-rotator {
+    font-size: 1.25rem;
+  }
+
+  .faq-collapsible-body {
+    padding: 0 16px;
+    font-size: 0.88rem;
+  }
+
+  .faq-panel.active .faq-collapsible-body {
+    padding: 0 16px 18px;
+  }
+
+  /* Barre Sticky Mobile */
   .sticky-conversion-dock {
     display: block;
+    padding: 10px 14px max(12px, env(safe-area-inset-bottom));
   }
 
-  /* Décale le toast pour qu'il n'obstrue pas la barre de commande sur mobile */
+  .dock-price-amount {
+    font-size: 1.12rem;
+  }
+
+  .sticky-dock-inner .btn-conversion {
+    padding: 12px 18px;
+    font-size: 0.85rem;
+  }
+
+  /* Toast Notification */
   .sales-toast-bubble {
     bottom: 84px;
     left: 12px;
     right: 12px;
     max-width: none;
+    padding: 10px 14px;
+    gap: 10px;
   }
 
+  .toast-badge-check {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .toast-buyer-name {
+    font-size: 0.8rem;
+  }
+
+  .toast-product-action {
+    font-size: 0.7rem;
+  }
+
+  /* Espace de sécurité sous le footer pour ne pas être caché par la barre sticky */
   body {
-    padding-bottom: 70px;
+    padding-bottom: 95px !important;
   }
 }
 
-/* Très petits smartphones (max-width: 420px) */
-@media (max-width: 420px) {
+/* 3. TRÈS PETITS SMARTPHONES (max-width: 380px) */
+@media (max-width: 380px) {
   .hero-main-title {
-    font-size: 2.05rem;
+    font-size: 1.85rem;
   }
 
-  .price-highlight-huge {
-    font-size: 3rem;
-  }
-
-  .btn-conversion {
-    padding: 16px 24px;
+  .brand-title-top {
     font-size: 0.95rem;
   }
 
-  .hero-floating-badge {
-    left: 0;
-    right: 0;
-    bottom: -16px;
-    justify-content: center;
+  .btn-conversion {
+    font-size: 0.9rem;
+    padding: 15px 14px;
+  }
+
+  .price-highlight-huge {
+    font-size: 2.6rem;
+  }
+
+  .value-stack-left {
+    font-size: 0.8rem;
   }
 }
+
