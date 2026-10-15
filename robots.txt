@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://farouz207.github.io/les-dessous-du-busness-produit-1-/sitemap.xml
+Sitemap: https://les-dessous-du-busness-produit-1.vercel.app/sitemap.xml
