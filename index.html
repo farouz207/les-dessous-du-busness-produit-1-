@@ -175,13 +175,14 @@
     <!-- 1. TOP BARRE D'OFFRE & URGENCE DYNAMIQUE -->
     <aside class="top-announcement" aria-label="Offre promotionnelle">
       <div class="top-announcement-inner">
-        <!-- Badge pays détecté intelligemment -->
+        <!-- Badge pays détecté intelligemment avec vrai drapeau SVG -->
         <div class="country-detect-badge" id="countryDetectBadge" style="display: none;">
           <span class="country-pulse-dot" aria-hidden="true"></span>
-          <span id="countryDetectText">Détecté en Côte d'Ivoire 🇨🇮</span>
+          <img id="countryFlagImg" src="https://flagcdn.com/20x15/us.png" width="17" height="12" alt="Drapeau" class="country-flag-img" style="display: none;">
+          <span id="countryDetectText"></span>
         </div>
-        <span class="top-badge-pulse" data-i18n="top.badge">🔥 OFFRE DE LANCEMENT EXCLUSIVE</span>
-        <span data-i18n-html="top.text">Tarif préférentiel limité aux prochains lecteurs <strong>(Seulement 2 500 F CFA)</strong></span>
+        <span class="top-badge-pulse" data-i18n="top.badge">🔥 OFFRE DE LANCEMENT</span>
+        <span class="top-promo-lead" data-i18n-html="top.text">Tarif préférentiel limité aux prochains lecteurs <strong>(Seulement 2 500 F CFA)</strong></span>
         <div class="top-countdown-box">
           <span data-i18n="top.expires">⏱️ EXPIRE DANS :</span>
           <span id="countdown-timer" aria-live="polite">04h 18m 42s</span>
@@ -214,14 +215,14 @@
         </nav>
 
         <div class="header-right-tools">
-          <!-- Sélecteur de Langue Élégant (FR / EN) -->
+          <!-- Sélecteur de Langue Élégant avec vrais drapeaux universels -->
           <div class="lang-switcher" id="langSwitcher" role="group" aria-label="Langue / Language">
             <button type="button" class="lang-btn active" data-lang-target="fr" aria-pressed="true" title="Français">
-              <span class="lang-flag">🇫🇷</span>
+              <img src="https://flagcdn.com/20x15/fr.png" width="16" height="12" alt="FR" class="lang-flag-img">
               <span class="lang-label">FR</span>
             </button>
             <button type="button" class="lang-btn" data-lang-target="en" aria-pressed="false" title="English">
-              <span class="lang-flag">🇬🇧</span>
+              <img src="https://flagcdn.com/20x15/gb.png" width="16" height="12" alt="EN" class="lang-flag-img">
               <span class="lang-label">EN</span>
             </button>
           </div>

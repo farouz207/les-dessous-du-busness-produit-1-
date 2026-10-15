@@ -152,24 +152,26 @@ h1, h2, h3, h4, .serif-font {
    TOP BARRE D'OFFRE & COMPTE À REBOURS
    ========================================================================== */
 .top-announcement {
-  background: linear-gradient(90deg, #3A1414 0%, #150909 35%, #0B1910 70%, #16361C 100%);
+  background: linear-gradient(90deg, #2D1010 0%, #150909 30%, #0A160F 70%, #122B17 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-  padding: 10px 16px;
-  font-size: 0.85rem;
+  padding: 8px 16px;
+  font-size: 0.82rem;
   color: var(--text-cream-muted);
   position: sticky;
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .top-announcement-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
   text-align: center;
+  line-height: 1.35;
 }
 
 .top-badge-pulse {
@@ -177,28 +179,34 @@ h1, h2, h3, h4, .serif-font {
   align-items: center;
   gap: 6px;
   background: rgba(220, 38, 38, 0.25);
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  border: 1px solid rgba(239, 68, 68, 0.45);
   color: #FCA5A5;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  padding: 3px 8px;
+  padding: 3px 9px;
   border-radius: var(--radius-full);
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.top-promo-lead {
+  font-size: 0.82rem;
 }
 
 .top-countdown-box {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 3px 12px;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 3px 10px;
   border-radius: var(--radius-full);
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--accent-green-neon);
   letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -400,6 +408,29 @@ h1, h2, h3, h4, .serif-font {
   box-shadow: 0 0 6px #34D399;
   animation: pulseGreen 1.8s infinite;
   display: inline-block;
+  flex-shrink: 0;
+}
+
+.country-flag-img {
+  width: 17px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.lang-flag-img {
+  width: 16px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
 }
 
 /* Animation douce lors de la bascule de langue */

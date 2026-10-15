@@ -283,28 +283,28 @@ document.addEventListener('DOMContentLoaded', () => {
   ]);
 
   const COUNTRY_NAMES = {
-    BJ: { fr: "Bénin 🇧🇯", en: "Benin 🇧🇯" },
-    CI: { fr: "Côte d'Ivoire 🇨🇮", en: "Ivory Coast 🇨🇮" },
-    SN: { fr: "Sénégal 🇸🇳", en: "Senegal 🇸🇳" },
-    TG: { fr: "Togo 🇹🇬", en: "Togo 🇹🇬" },
-    CM: { fr: "Cameroun 🇨🇲", en: "Cameroon 🇨🇲" },
-    ML: { fr: "Mali 🇲🇱", en: "Mali 🇲🇱" },
-    BF: { fr: "Burkina Faso 🇧🇫", en: "Burkina Faso 🇧🇫" },
-    NE: { fr: "Niger 🇳🇪", en: "Niger 🇳🇪" },
-    GN: { fr: "Guinée 🇬🇳", en: "Guinea 🇬🇳" },
-    GA: { fr: "Gabon 🇬🇦", en: "Gabon 🇬🇦" },
-    CD: { fr: "RD Congo 🇨🇩", en: "DR Congo 🇨🇩" },
-    CG: { fr: "Congo 🇨🇬", en: "Congo 🇨🇬" },
-    FR: { fr: "France 🇫🇷", en: "France 🇫🇷" },
-    BE: { fr: "Belgique 🇧🇪", en: "Belgium 🇧🇪" },
-    CH: { fr: "Suisse 🇨🇭", en: "Switzerland 🇨🇭" },
-    CA: { fr: "Canada 🇨🇦", en: "Canada 🇨🇦" },
-    US: { fr: "États-Unis 🇺🇸", en: "United States 🇺🇸" },
-    GB: { fr: "Royaume-Uni 🇬🇧", en: "United Kingdom 🇬🇧" },
-    NG: { fr: "Nigeria 🇳🇬", en: "Nigeria 🇳🇬" },
-    GH: { fr: "Ghana 🇬🇭", en: "Ghana 🇬🇭" },
-    ZA: { fr: "Afrique du Sud 🇿🇦", en: "South Africa 🇿🇦" },
-    DE: { fr: "Allemagne 🇩🇪", en: "Germany 🇩🇪" }
+    BJ: { fr: "Bénin", en: "Benin" },
+    CI: { fr: "Côte d'Ivoire", en: "Ivory Coast" },
+    SN: { fr: "Sénégal", en: "Senegal" },
+    TG: { fr: "Togo", en: "Togo" },
+    CM: { fr: "Cameroun", en: "Cameroon" },
+    ML: { fr: "Mali", en: "Mali" },
+    BF: { fr: "Burkina Faso", en: "Burkina Faso" },
+    NE: { fr: "Niger", en: "Niger" },
+    GN: { fr: "Guinée", en: "Guinea" },
+    GA: { fr: "Gabon", en: "Gabon" },
+    CD: { fr: "RD Congo", en: "DR Congo" },
+    CG: { fr: "Congo", en: "Congo" },
+    FR: { fr: "France", en: "France" },
+    BE: { fr: "Belgique", en: "Belgium" },
+    CH: { fr: "Suisse", en: "Switzerland" },
+    CA: { fr: "Canada", en: "Canada" },
+    US: { fr: "États-Unis", en: "United States" },
+    GB: { fr: "Royaume-Uni", en: "United Kingdom" },
+    NG: { fr: "Nigeria", en: "Nigeria" },
+    GH: { fr: "Ghana", en: "Ghana" },
+    ZA: { fr: "Afrique du Sud", en: "South Africa" },
+    DE: { fr: "Allemagne", en: "Germany" }
   };
 
   let currentLang = 'fr';
@@ -381,10 +381,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mise à jour du badge pays
     updateCountryBadge();
 
-    // Mémoriser la sélection si manuelle
+    // Mémoriser la sélection si l'utilisateur a cliqué manuellement
     if (options.save) {
       try {
-        localStorage.setItem('ldb_user_lang', lang);
+        sessionStorage.setItem('ldb_user_lang', lang);
       } catch (e) {}
     }
   }
@@ -392,7 +392,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateCountryBadge() {
     const badge = document.getElementById('countryDetectBadge');
     const textEl = document.getElementById('countryDetectText');
+    const flagImg = document.getElementById('countryFlagImg');
     if (!badge || !textEl || !detectedCountryCode) return;
+
+    const countryCodeLower = detectedCountryCode.toLowerCase();
+    if (flagImg) {
+      flagImg.src = `https://flagcdn.com/20x15/${countryCodeLower}.png`;
+      flagImg.alt = detectedCountryCode;
+      flagImg.style.display = 'inline-block';
+    }
 
     const countryInfo = COUNTRY_NAMES[detectedCountryCode] || {
       fr: detectedCountryCode,
@@ -410,13 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. DÉTECTION INTELLIGENTE DU PAYS & LANGUE
   // ==========================================================================
   async function detectCountryAndLanguage() {
-    // A. Choix explicite mémorisé dans le navigateur
-    let savedLang = null;
-    try {
-      savedLang = localStorage.getItem('ldb_user_lang');
-    } catch (e) {}
-
-    // B. Paramètre URL explicite (?lang=en ou ?lang=fr)
+    // A. Paramètre URL explicite prioritaire (?lang=en ou ?lang=fr)
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
 
@@ -426,16 +428,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    if (savedLang === 'en' || savedLang === 'fr') {
-      setLanguage(savedLang);
+    // B. Choix explicite manuel de l'utilisateur pendant sa session
+    let sessionLang = null;
+    try {
+      sessionLang = sessionStorage.getItem('ldb_user_lang');
+    } catch (e) {}
+
+    if (sessionLang === 'en' || sessionLang === 'fr') {
+      setLanguage(sessionLang);
       fetchCountryOnly();
       return;
     }
 
-    // C. Détection automatique via Géolocalisation IP
+    // C. Détection automatique en temps réel via Géolocalisation IP
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2200);
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
 
       const res = await fetch('https://api.country.is/', {
         signal: controller.signal
@@ -453,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     } catch (err) {
-      // Fallback si l'API est indisponible ou bloquée par un adblocker
+      // Fallback si indisponible ou bloqué
     }
 
     // D. Fallback basé sur la langue du navigateur
