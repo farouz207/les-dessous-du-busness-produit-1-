@@ -322,6 +322,95 @@ h1, h2, h3, h4, .serif-font {
 }
 
 /* ==========================================================================
+   SÉLECTEUR DE LANGUE & DÉTECTION PAYS INTELLIGENTE
+   ========================================================================== */
+.header-right-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(18, 18, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 5px 9px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  line-height: 1;
+}
+
+.lang-btn:hover {
+  color: var(--text-cream);
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, rgba(38, 128, 64, 0.9) 0%, rgba(26, 99, 47, 0.95) 100%);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(38, 128, 64, 0.4);
+}
+
+.lang-flag {
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* Badge pays détecté intelligemment */
+.country-detect-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(38, 128, 64, 0.2);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #6EE7B7;
+  letter-spacing: 0.2px;
+  box-shadow: 0 0 12px rgba(38, 128, 64, 0.25);
+  animation: fadeIn 0.4s ease-out;
+}
+
+.country-pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: #34D399;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #34D399;
+  animation: pulseGreen 1.8s infinite;
+  display: inline-block;
+}
+
+/* Animation douce lors de la bascule de langue */
+.i18n-trans {
+  transition: opacity 0.18s ease-in-out;
+}
+.i18n-fading {
+  opacity: 0.15 !important;
+}
+
+/* ==========================================================================
    BOUTONS CTA HAUTE CONVERSION (EFFETS LUXE)
    ========================================================================== */
 .btn-conversion {
@@ -1422,6 +1511,24 @@ img {
     display: inline-flex;
     padding: 9px 16px;
     font-size: 0.8rem;
+  }
+
+  .header-right-tools {
+    gap: 8px;
+  }
+
+  @media (max-width: 520px) {
+    .header-cta-desktop {
+      display: none !important;
+    }
+    .lang-switcher {
+      padding: 2px;
+    }
+    .lang-btn {
+      padding: 4px 7px;
+      font-size: 0.72rem;
+      gap: 3px;
+    }
   }
 
   .brand-title-top {

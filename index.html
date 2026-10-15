@@ -175,10 +175,15 @@
     <!-- 1. TOP BARRE D'OFFRE & URGENCE DYNAMIQUE -->
     <aside class="top-announcement" aria-label="Offre promotionnelle">
       <div class="top-announcement-inner">
-        <span class="top-badge-pulse">🔥 OFFRE DE LANCEMENT EXCLUSIVE</span>
-        <span>Tarif préférentiel limité aux prochains lecteurs <strong>(Seulement 2 500 F CFA)</strong></span>
+        <!-- Badge pays détecté intelligemment -->
+        <div class="country-detect-badge" id="countryDetectBadge" style="display: none;">
+          <span class="country-pulse-dot" aria-hidden="true"></span>
+          <span id="countryDetectText">Détecté en Côte d'Ivoire 🇨🇮</span>
+        </div>
+        <span class="top-badge-pulse" data-i18n="top.badge">🔥 OFFRE DE LANCEMENT EXCLUSIVE</span>
+        <span data-i18n-html="top.text">Tarif préférentiel limité aux prochains lecteurs <strong>(Seulement 2 500 F CFA)</strong></span>
         <div class="top-countdown-box">
-          <span>⏱️ EXPIRE DANS :</span>
+          <span data-i18n="top.expires">⏱️ EXPIRE DANS :</span>
           <span id="countdown-timer" aria-live="polite">04h 18m 42s</span>
         </div>
       </div>
@@ -200,17 +205,31 @@
 
         <nav class="nav-desktop" aria-label="Navigation principale">
           <ul class="nav-desktop-menu">
-            <li><a href="#transformation">La Transformation</a></li>
-            <li><a href="#programme">Le Sommaire</a></li>
-            <li><a href="#philosophie">L'Auteur</a></li>
-            <li><a href="#avis">Témoignages</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#transformation" data-i18n="nav.transformation">La Transformation</a></li>
+            <li><a href="#programme" data-i18n="nav.curriculum">Le Sommaire</a></li>
+            <li><a href="#philosophie" data-i18n="nav.author">L'Auteur</a></li>
+            <li><a href="#avis" data-i18n="nav.testimonials">Témoignages</a></li>
+            <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
           </ul>
         </nav>
 
-        <a href="#commander" class="btn-conversion btn-conversion-sm header-cta-desktop track-checkout-btn">
-          Obtenir mon Guide →
-        </a>
+        <div class="header-right-tools">
+          <!-- Sélecteur de Langue Élégant (FR / EN) -->
+          <div class="lang-switcher" id="langSwitcher" role="group" aria-label="Langue / Language">
+            <button type="button" class="lang-btn active" data-lang-target="fr" aria-pressed="true" title="Français">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-label">FR</span>
+            </button>
+            <button type="button" class="lang-btn" data-lang-target="en" aria-pressed="false" title="English">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-label">EN</span>
+            </button>
+          </div>
+
+          <a href="#commander" class="btn-conversion btn-conversion-sm header-cta-desktop track-checkout-btn" data-i18n="nav.cta">
+            Obtenir mon Guide →
+          </a>
+        </div>
 
       </div>
     </header>
@@ -224,17 +243,17 @@
           <!-- Colonne Copywriting & Promesse Forte -->
           <div class="hero-copy-col">
             <div class="hero-tag-wrap">
-              <span class="hero-pill-badge">
+              <span class="hero-pill-badge" data-i18n-html="hero.badge">
                 <span class="dot-live" aria-hidden="true"></span>
                 Édition Officielle • Guide Pratique Numérique
               </span>
             </div>
 
-            <h1 class="hero-main-title">
+            <h1 class="hero-main-title" data-i18n-html="hero.title">
               Prends la parole avec <span class="highlight-bordeaux">assurance</span>.
             </h1>
 
-            <p class="hero-lead-text">
+            <p class="hero-lead-text" data-i18n-html="hero.lead">
               Développe une présence captivante, structure tes pensées en <strong>3 points percutants</strong> et élimine le trac avant chaque prise de parole.
             </p>
 
@@ -242,28 +261,28 @@
             <div class="hero-pillars-grid">
               <div class="pillar-item">
                 <div class="pillar-icon-box" aria-hidden="true">🧠</div>
-                <div class="pillar-label">Gagne en confiance</div>
+                <div class="pillar-label" data-i18n="hero.pillar1">Gagne en confiance</div>
               </div>
               <div class="pillar-item">
                 <div class="pillar-icon-box" aria-hidden="true">💡</div>
-                <div class="pillar-label">Structure tes idées</div>
+                <div class="pillar-label" data-i18n="hero.pillar2">Structure tes idées</div>
               </div>
               <div class="pillar-item">
                 <div class="pillar-icon-box" aria-hidden="true">👥</div>
-                <div class="pillar-label">Captive ton audience</div>
+                <div class="pillar-label" data-i18n="hero.pillar3">Captive ton audience</div>
               </div>
             </div>
 
             <!-- Call-To-Action & Éléments de Réassurance -->
             <div class="hero-action-block">
               <a href="https://wyvmgyhr.mychariow.com/prd_vqzd2xnd?chw_campaign=SCROX9Q9UK&campaign=SCROX9Q9UK" class="btn-conversion track-checkout-btn" id="hero-order-cta">
-                <span>DÉCOUVRIR LE GUIDE (2 500 F)</span>
+                <span data-i18n="hero.cta">DÉCOUVRIR LE GUIDE (2 500 F)</span>
                 <span aria-hidden="true">→</span>
               </a>
 
               <div class="hero-trust-bar">
-                <span>🔒 Paiement sécurisé :</span>
-                <div class="payment-chips">
+                <span data-i18n="hero.trustTitle">🔒 Paiement sécurisé :</span>
+                <div class="payment-chips" id="heroPaymentChips">
                   <span class="chip-pay">MTN MoMo</span>
                   <span class="chip-pay">Moov Money</span>
                   <span class="chip-pay">Wave</span>
@@ -286,8 +305,8 @@
             <div class="hero-floating-badge">
               <span class="floating-badge-icon" aria-hidden="true">⭐</span>
               <div class="floating-badge-content">
-                <strong>Noté 4.9 / 5</strong>
-                <span>+420 entrepreneurs formés</span>
+                <strong data-i18n="hero.rating">Noté 4.9 / 5</strong>
+                <span data-i18n="hero.readersCount">+420 entrepreneurs formés</span>
               </div>
             </div>
           </div>
@@ -300,19 +319,19 @@
         <div class="container stats-grid-row">
           <div class="stat-box">
             <h3>420+</h3>
-            <p>Lecteurs ambitieux</p>
+            <p data-i18n="stats.item1">Lecteurs ambitieux</p>
           </div>
           <div class="stat-box">
             <h3>100%</h3>
-            <p>Actionnable & concret</p>
+            <p data-i18n="stats.item2">Actionnable & concret</p>
           </div>
           <div class="stat-box">
             <h3>4 Modules</h3>
-            <p>Méthode étape par étape</p>
+            <p data-i18n="stats.item3">Méthode étape par étape</p>
           </div>
           <div class="stat-box">
-            <h3>Accès à Vie</h3>
-            <p>Téléchargement immédiat</p>
+            <h3 data-i18n="stats.item4Val">Accès à Vie</h3>
+            <p data-i18n="stats.item4">Téléchargement immédiat</p>
           </div>
         </div>
       </section>
@@ -321,9 +340,9 @@
       <section class="section-contrast" id="transformation" aria-label="Transformation avant et après">
         <div class="container">
           <div class="section-title-center">
-            <span class="section-eyebrow highlight-bordeaux">La Différence</span>
-            <h2 class="section-heading">Ce qui change quand vous maîtrisez la méthode.</h2>
-            <p class="section-subheading">
+            <span class="section-eyebrow highlight-bordeaux" data-i18n="contrast.eyebrow">La Différence</span>
+            <h2 class="section-heading" data-i18n="contrast.heading">Ce qui change quand vous maîtrisez la méthode.</h2>
+            <p class="section-subheading" data-i18n="contrast.subheading">
               L'éloquence n'est pas un don de naissance. C'est un ensemble de leviers psychologiques et posturaux accessibles à tous.
             </p>
           </div>
@@ -332,46 +351,46 @@
             
             <!-- Carte Sans la méthode -->
             <div class="contrast-box negative">
-              <span class="contrast-badge">❌ Sans la méthode</span>
+              <span class="contrast-badge" data-i18n="contrast.badgeWithout">❌ Sans la méthode</span>
               <ul class="contrast-points-list">
                 <li class="contrast-point-item">
                   <span class="point-icon" aria-hidden="true">✕</span>
-                  <span>Gorge nouée, voix hésitante et rythme cardiaque qui s'emballe dès que tous les regards se tournent vers vous.</span>
+                  <span data-i18n="contrast.neg1">Gorge nouée, voix hésitante et rythme cardiaque qui s'emballe dès que tous les regards se tournent vers vous.</span>
                 </li>
                 <li class="contrast-point-item">
                   <span class="point-icon" aria-hidden="true">✕</span>
-                  <span>Peur constante du trou noir et difficulté à enchaîner vos idées logiquement.</span>
+                  <span data-i18n="contrast.neg2">Peur constante du trou noir et difficulté à enchaîner vos idées logiquement.</span>
                 </li>
                 <li class="contrast-point-item">
                   <span class="point-icon" aria-hidden="true">✕</span>
-                  <span>Auditoire qui se distrait, regarde son téléphone et ne retient rien de votre intervention.</span>
+                  <span data-i18n="contrast.neg3">Auditoire qui se distrait, regarde son téléphone et ne retient rien de votre intervention.</span>
                 </li>
                 <li class="contrast-point-item">
                   <span class="point-icon" aria-hidden="true">✕</span>
-                  <span>Opportunités professionnelles manquées au profit d'orateurs moins compétents mais plus audibles.</span>
+                  <span data-i18n="contrast.neg4">Opportunités professionnelles manquées au profit d'orateurs moins compétents mais plus audibles.</span>
                 </li>
               </ul>
             </div>
 
             <!-- Carte Avec la méthode -->
             <div class="contrast-box positive">
-              <span class="contrast-badge">✓ Avec le Guide Pratique</span>
+              <span class="contrast-badge" data-i18n="contrast.badgeWith">✓ Avec le Guide Pratique</span>
               <ul class="contrast-points-list">
                 <li class="contrast-point-item">
                   <span class="point-icon" aria-hidden="true">✓</span>
-                  <span>Protocole physiologique de 90 secondes pour désactiver le trac et calmer immédiatement votre respiration.</span>
+                  <span data-i18n="contrast.pos1">Protocole physiologique de 90 secondes pour désactiver le trac et calmer immédiatement votre respiration.</span>
                 </li>
                 <li class="contrast-point-item">
                   <span class="point-icon" aria-hidden="true">✓</span>
-                  <span>Architecture mentale invisible en 3 points : vous savez toujours exactement quoi dire ensuite sans note.</span>
+                  <span data-i18n="contrast.pos2">Architecture mentale invisible en 3 points : vous savez toujours exactement quoi dire ensuite sans note.</span>
                 </li>
                 <li class="contrast-point-item">
                   <span class="point-icon" aria-hidden="true">✓</span>
-                  <span>Voix posée dans les graves, pauses magnétiques et posture qui force naturellement le respect.</span>
+                  <span data-i18n="contrast.pos3">Voix posée dans les graves, pauses magnétiques et posture qui force naturellement le respect.</span>
                 </li>
                 <li class="contrast-point-item">
                   <span class="point-icon" aria-hidden="true">✓</span>
-                  <span>Une aisance remarquée lors de vos réunions, présentations, vidéos et négociations de haut niveau.</span>
+                  <span data-i18n="contrast.pos4">Une aisance remarquée lors de vos réunions, présentations, vidéos et négociations de haut niveau.</span>
                 </li>
               </ul>
             </div>
@@ -379,7 +398,7 @@
           </div>
 
           <div style="text-align: center;">
-            <a href="#commander" class="btn-conversion track-checkout-btn">
+            <a href="#commander" class="btn-conversion track-checkout-btn" data-i18n="contrast.cta">
               JE VEUX CETTE TRANSFORMATION (2 500 F) →
             </a>
           </div>
@@ -390,9 +409,9 @@
       <section class="section-curriculum" id="programme" aria-label="Sommaire détaillé du guide">
         <div class="container">
           <div class="section-title-center">
-            <span class="section-eyebrow highlight-green">Programme Détaillé</span>
-            <h2 class="section-heading">4 Modules pour devenir un orateur d'impact</h2>
-            <p class="section-subheading">
+            <span class="section-eyebrow highlight-green" data-i18n="curriculum.eyebrow">Programme Détaillé</span>
+            <h2 class="section-heading" data-i18n="curriculum.heading">4 Modules pour devenir un orateur d'impact</h2>
+            <p class="section-subheading" data-i18n="curriculum.subheading">
               Chaque module s'attaque à une étape stratégique pour transformer votre communication.
             </p>
           </div>
@@ -402,39 +421,39 @@
             <article class="curriculum-card">
               <div class="curriculum-num" aria-hidden="true">01</div>
               <div class="curriculum-body">
-                <h3>La Déprogrammation du Trac</h3>
-                <p>Comprenez la mécanique biologique de la peur pour la neutraliser en 90 secondes. Apprenez l'ancrage corporel qui stabilise les battements cardiaques avant d'entrer en scène.</p>
+                <h3 data-i18n="curriculum.mod1Title">La Déprogrammation du Trac</h3>
+                <p data-i18n="curriculum.mod1Desc">Comprenez la mécanique biologique de la peur pour la neutraliser en 90 secondes. Apprenez l'ancrage corporel qui stabilise les battements cardiaques avant d'entrer en scène.</p>
               </div>
             </article>
 
             <article class="curriculum-card">
               <div class="curriculum-num" aria-hidden="true">02</div>
               <div class="curriculum-body">
-                <h3>L'Architecture Invisible du Discours</h3>
-                <p>Le framework en 3 points pour captiver votre audience du début à la fin. Ne récitez plus jamais par cœur : organisez vos idées comme un fil conducteur limpide et irrésistible.</p>
+                <h3 data-i18n="curriculum.mod2Title">L'Architecture Invisible du Discours</h3>
+                <p data-i18n="curriculum.mod2Desc">Le framework en 3 points pour captiver votre audience du début à la fin. Ne récitez plus jamais par cœur : organisez vos idées comme un fil conducteur limpide et irrésistible.</p>
               </div>
             </article>
 
             <article class="curriculum-card">
               <div class="curriculum-num" aria-hidden="true">03</div>
               <div class="curriculum-body">
-                <h3>Le Pouvoir du Silence & de la Voix</h3>
-                <p>Comment poser sa voix dans les graves, éliminer les tics de langage (« euh », hésitations) et manier les silences stratégiques qui créent une tension d'écoute maximale.</p>
+                <h3 data-i18n="curriculum.mod3Title">Le Pouvoir du Silence & de la Voix</h3>
+                <p data-i18n="curriculum.mod3Desc">Comment poser sa voix dans les graves, éliminer les tics de langage (« euh », hésitations) et manier les silences stratégiques qui créent une tension d'écoute maximale.</p>
               </div>
             </article>
 
             <article class="curriculum-card">
               <div class="curriculum-num" aria-hidden="true">04</div>
               <div class="curriculum-body">
-                <h3>Désarmer les Objections & Imprévus</h3>
-                <p>La méthode des orateurs charismatiques pour répondre avec sang-froid et élégance aux questions pièges, aux contradictions ou aux incidents techniques.</p>
+                <h3 data-i18n="curriculum.mod4Title">Désarmer les Objections & Imprévus</h3>
+                <p data-i18n="curriculum.mod4Desc">La méthode des orateurs charismatiques pour répondre avec sang-froid et élégance aux questions pièges, aux contradictions ou aux incidents techniques.</p>
               </div>
             </article>
 
           </div>
 
           <div style="text-align: center;">
-            <a href="#commander" class="btn-conversion track-checkout-btn">
+            <a href="#commander" class="btn-conversion track-checkout-btn" data-i18n="curriculum.cta">
               DÉCOUVRIR LE CONTENU COMPLET →
             </a>
           </div>
@@ -449,21 +468,21 @@
             <img src="assets/speaker.jpg" alt="Orateur et conférencier en col roulé noir - Les Dessous du Business" width="500" height="500" loading="lazy">
             <div class="speaker-card-overlay">
               <h4>Les Dessous du Business</h4>
-              <p>Comprendre • Progresser • Devenir meilleur</p>
+              <p data-i18n="speaker.motto">Comprendre • Progresser • Devenir meilleur</p>
             </div>
           </div>
 
           <div class="speaker-story-text">
-            <span class="section-eyebrow highlight-bordeaux">Une Philosophie Exigeante</span>
-            <h2>Ce que personne ne vous dit sur le charisme.</h2>
-            <p>
+            <span class="section-eyebrow highlight-bordeaux" data-i18n="speaker.eyebrow">Une Philosophie Exigeante</span>
+            <h2 data-i18n="speaker.heading">Ce que personne ne vous dit sur le charisme.</h2>
+            <p data-i18n="speaker.p1">
               Sur les réseaux sociaux, on admire souvent les orateurs magnétiques, capables de suspendre une salle à leurs lèvres. On imagine qu'ils sont nés avec ce don.
             </p>
-            <div class="quote-highlight-box">
+            <div class="quote-highlight-box" data-i18n="speaker.quote">
               « Le charisme ne naît pas sur scène. Il naît dans la préparation silencieuse de l'esprit, la rigueur de la structure et le respect de son message. »
             </div>
-            <p>
-              Ce guide a été rédigé avec une règle absolue : **zéro remplissage, 100% d'efficacité directe**. Vous le lisez en 45 minutes, et vous l'appliquez dès votre prochaine réunion ou votre prochaine vidéo.
+            <p data-i18n-html="speaker.p2">
+              Ce guide a été rédigé avec une règle absolue : <strong>zéro remplissage, 100% d'efficacité directe</strong>. Vous le lisez en 45 minutes, et vous l'appliquez dès votre prochaine réunion ou votre prochaine vidéo.
             </p>
           </div>
 
@@ -474,9 +493,9 @@
       <section class="section-testimonials" id="avis" aria-label="Avis des lecteurs">
         <div class="container">
           <div class="section-title-center">
-            <span class="section-eyebrow highlight-gold">Avis Vérifiés</span>
-            <h2 class="section-heading">Ce que disent ceux qui l'ont appliqué</h2>
-            <p class="section-subheading">
+            <span class="section-eyebrow highlight-gold" data-i18n="testimonials.eyebrow">Avis Vérifiés</span>
+            <h2 class="section-heading" data-i18n="testimonials.heading">Ce que disent ceux qui l'ont appliqué</h2>
+            <p class="section-subheading" data-i18n="testimonials.subheading">
               Plus de 420 professionnels, créateurs et étudiants utilisent déjà ce guide au quotidien.
             </p>
           </div>
@@ -486,16 +505,16 @@
             <div class="testimonial-card">
               <div>
                 <div class="stars-rating" aria-label="Note 5 sur 5">★★★★★</div>
-                <p class="testimonial-quote">
+                <p class="testimonial-quote" data-i18n="testimonials.review1">
                   « La technique des 90 secondes avant d'entrer en réunion a tout changé pour moi. J'avais les mains moites à chaque présentation devant mon DG. Hier, j'ai pris la parole pendant 20 minutes sans la moindre hésitation. »
                 </p>
               </div>
               <div class="testimonial-author-row">
                 <div class="author-avatar-initials">AK</div>
                 <div class="author-details">
-                  <strong>Armel K.</strong>
-                  <span>Responsable Projet • Abidjan</span>
-                  <span class="verified-buyer-tag">✓ Acheteur Vérifié</span>
+                  <strong data-i18n="testimonials.author1">Armel K.</strong>
+                  <span data-i18n="testimonials.role1">Responsable Projet • Abidjan</span>
+                  <span class="verified-buyer-tag" data-i18n="testimonials.verified">✓ Acheteur Vérifié</span>
                 </div>
               </div>
             </div>
@@ -503,16 +522,16 @@
             <div class="testimonial-card">
               <div>
                 <div class="stars-rating" aria-label="Note 5 sur 5">★★★★★</div>
-                <p class="testimonial-quote">
+                <p class="testimonial-quote" data-i18n="testimonials.review2">
                   « Ce n'est pas un énième livre théorique de 300 pages qu'on ne finit jamais. C'est un plan de vol condensé. La structure du discours en 3 points m'a permis de closer un client stratégique la semaine dernière. »
                 </p>
               </div>
               <div class="testimonial-author-row">
                 <div class="author-avatar-initials">SM</div>
                 <div class="author-details">
-                  <strong>Serge M.</strong>
-                  <span>Fondateur d'Agence • Cotonou</span>
-                  <span class="verified-buyer-tag">✓ Acheteur Vérifié</span>
+                  <strong data-i18n="testimonials.author2">Serge M.</strong>
+                  <span data-i18n="testimonials.role2">Fondateur d'Agence • Cotonou</span>
+                  <span class="verified-buyer-tag" data-i18n="testimonials.verified">✓ Acheteur Vérifié</span>
                 </div>
               </div>
             </div>
@@ -520,16 +539,16 @@
             <div class="testimonial-card">
               <div>
                 <div class="stars-rating" aria-label="Note 5 sur 5">★★★★★</div>
-                <p class="testimonial-quote">
+                <p class="testimonial-quote" data-i18n="testimonials.review3">
                   « Pour 2 500 FCFA, la valeur délivrée est tout simplement exceptionnelle. Rien que la fiche mémo d'urgence vaut dix fois ce prix. Bravo à l'équipe des Dessous du Business pour ce niveau d'exigence. »
                 </p>
               </div>
               <div class="testimonial-author-row">
                 <div class="author-avatar-initials">TD</div>
                 <div class="author-details">
-                  <strong>Thierry D.</strong>
-                  <span>Créateur de Contenu • Dakar</span>
-                  <span class="verified-buyer-tag">✓ Acheteur Vérifié</span>
+                  <strong data-i18n="testimonials.author3">Thierry D.</strong>
+                  <span data-i18n="testimonials.role3">Créateur de Contenu • Dakar</span>
+                  <span class="verified-buyer-tag" data-i18n="testimonials.verified">✓ Acheteur Vérifié</span>
                 </div>
               </div>
             </div>
@@ -543,14 +562,14 @@
         <div class="container">
           
           <div class="grand-offer-card">
-            <div class="offer-ribbon-top">
+            <div class="offer-ribbon-top" data-i18n="offer.ribbon">
               Offre Spéciale de Lancement • Accès Immédiat
             </div>
 
-            <h2 class="offer-card-title serif-font">
+            <h2 class="offer-card-title serif-font" data-i18n="offer.title">
               Prends la parole avec assurance
             </h2>
-            <p class="offer-card-subtitle">
+            <p class="offer-card-subtitle" data-i18n="offer.subtitle">
               Le pack complet : Guide numérique + 3 Bonus Exclusifs de progression rapide.
             </p>
 
@@ -559,49 +578,49 @@
               <div class="value-stack-item">
                 <div class="value-stack-left">
                   <span class="value-check-icon" aria-hidden="true">✓</span>
-                  <span><strong>Le Guide Pratique Complet (PDF Haute Définition)</strong></span>
+                  <span data-i18n-html="offer.item1"><strong>Le Guide Pratique Complet (PDF Haute Définition)</strong></span>
                 </div>
-                <span class="value-price-tag">Valeur : 15 000 F</span>
+                <span class="value-price-tag" data-i18n="offer.val1">Valeur : 15 000 F</span>
               </div>
 
               <div class="value-stack-item">
                 <div class="value-stack-left">
                   <span class="value-check-icon" aria-hidden="true">✓</span>
-                  <span><strong>Bonus #1 :</strong> Fiche Mémo « 5 Minutes Avant d'Entrer en Scène »</span>
+                  <span data-i18n-html="offer.item2"><strong>Bonus #1 :</strong> Fiche Mémo « 5 Minutes Avant d'Entrer en Scène »</span>
                 </div>
-                <span class="value-price-tag">Valeur : 5 000 F</span>
+                <span class="value-price-tag" data-i18n="offer.val2">Valeur : 5 000 F</span>
               </div>
 
               <div class="value-stack-item">
                 <div class="value-stack-left">
                   <span class="value-check-icon" aria-hidden="true">✓</span>
-                  <span><strong>Bonus #2 :</strong> Le Template de Pitch Percutant en 60 Secondes</span>
+                  <span data-i18n-html="offer.item3"><strong>Bonus #2 :</strong> Le Template de Pitch Percutant en 60 Secondes</span>
                 </div>
-                <span class="value-price-tag">Valeur : 7 500 F</span>
+                <span class="value-price-tag" data-i18n="offer.val3">Valeur : 7 500 F</span>
               </div>
 
               <div class="value-stack-item">
                 <div class="value-stack-left">
                   <span class="value-check-icon" aria-hidden="true">✓</span>
-                  <span><strong>Bonus #3 :</strong> Accès illimité aux futures rééditions et mises à jour</span>
+                  <span data-i18n-html="offer.item4"><strong>Bonus #3 :</strong> Accès illimité aux futures rééditions et mises à jour</span>
                 </div>
-                <span class="value-price-tag" style="color: var(--accent-green-neon); text-decoration: none;">Offert à vie</span>
+                <span class="value-price-tag" style="color: var(--accent-green-neon); text-decoration: none;" data-i18n="offer.val4">Offert à vie</span>
               </div>
             </div>
 
             <!-- Affichage du Prix avec Contraste -->
             <div class="price-spotlight-box">
               <div class="price-numbers-row">
-                <span class="price-original-striked">27 500 F</span>
-                <span class="price-highlight-huge">2 500</span>
-                <span class="price-unit-currency">FCFA</span>
+                <span class="price-original-striked" id="offerStrikedPrice">27 500 F</span>
+                <span class="price-highlight-huge" id="offerCurrentPrice">2 500</span>
+                <span class="price-unit-currency" id="offerCurrency">FCFA</span>
               </div>
-              <p class="price-note-clarity">Paiement unique • Aucun abonnement • Accès immédiat et illimité à vie</p>
+              <p class="price-note-clarity" data-i18n="offer.priceNote">Paiement unique • Aucun abonnement • Accès immédiat et illimité à vie</p>
             </div>
 
             <!-- Bouton d'Achat Principal -->
             <div style="margin-top: 24px;">
-              <a href="https://wyvmgyhr.mychariow.com/prd_vqzd2xnd?chw_campaign=SCROX9Q9UK&campaign=SCROX9Q9UK" class="btn-conversion track-checkout-btn" style="width: 100%; max-width: 560px; font-size: 1.2rem; padding: 22px;">
+              <a href="https://wyvmgyhr.mychariow.com/prd_vqzd2xnd?chw_campaign=SCROX9Q9UK&campaign=SCROX9Q9UK" class="btn-conversion track-checkout-btn" id="offer-main-cta" style="width: 100%; max-width: 560px; font-size: 1.2rem; padding: 22px;" data-i18n="offer.cta">
                 COMMANDER LE GUIDE (2 500 F) →
               </a>
             </div>
@@ -609,10 +628,10 @@
             <!-- Badge de Garantie Sérénité -->
             <div class="offer-guarantee-pill">
               <span aria-hidden="true">🛡️</span>
-              <span><strong>Garantie Sérénité 30 Jours :</strong> 100% Satisfait ou Remboursé sans question</span>
+              <span data-i18n-html="offer.guarantee"><strong>Garantie Sérénité 30 Jours :</strong> 100% Satisfait ou Remboursé sans question</span>
             </div>
 
-            <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted);">
+            <p style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted);" data-i18n="offer.security">
               Paiement 100% sécurisé par protocole SSL 256 bits via la plateforme Chariow.
             </p>
           </div>
@@ -624,49 +643,49 @@
       <section class="section-faq" id="faq" aria-label="Questions fréquentes">
         <div class="container">
           <div class="section-title-center">
-            <span class="section-eyebrow highlight-bordeaux">Transparence Totale</span>
-            <h2 class="section-heading">Questions Fréquentes</h2>
-            <p class="section-subheading">Tout ce que vous devez savoir avant de passer commande.</p>
+            <span class="section-eyebrow highlight-bordeaux" data-i18n="faq.eyebrow">Transparence Totale</span>
+            <h2 class="section-heading" data-i18n="faq.heading">Questions Fréquentes</h2>
+            <p class="section-subheading" data-i18n="faq.subheading">Tout ce que vous devez savoir avant de passer commande.</p>
           </div>
 
           <div class="faq-container-box">
             
             <div class="faq-panel active">
               <button class="faq-trigger-btn" aria-expanded="true">
-                <span>Comment et quand vais-je recevoir le guide ?</span>
+                <span data-i18n="faq.q1">Comment et quand vais-je recevoir le guide ?</span>
                 <span class="faq-icon-rotator" aria-hidden="true">+</span>
               </button>
-              <div class="faq-collapsible-body">
+              <div class="faq-collapsible-body" data-i18n="faq.a1">
                 Dès la validation de votre règlement sur Chariow, vous recevez un lien de téléchargement direct instantané à l'écran ainsi qu'un email de confirmation avec votre guide au format PDF. Vous pouvez commencer votre lecture en moins de 2 minutes.
               </div>
             </div>
 
             <div class="faq-panel">
               <button class="faq-trigger-btn" aria-expanded="false">
-                <span>Est-ce adapté si je suis d'une nature très réservée ou timide ?</span>
+                <span data-i18n="faq.q2">Est-ce adapté si je suis d'une nature très réservée ou timide ?</span>
                 <span class="faq-icon-rotator" aria-hidden="true">+</span>
               </button>
-              <div class="faq-collapsible-body">
+              <div class="faq-collapsible-body" data-i18n="faq.a2">
                 Absolument. Ce guide a été conçu spécifiquement pour les personnes qui ne se sentent pas "naturellement extraverties". Il vous offre des routines physiologiques et des structures mécaniques qui ne dépendent ni de votre humeur, ni de votre timidité.
               </div>
             </div>
 
             <div class="faq-panel">
               <button class="faq-trigger-btn" aria-expanded="false">
-                <span>Quels sont les moyens de paiement disponibles ?</span>
+                <span data-i18n="faq.q3">Quels sont les moyens de paiement disponibles ?</span>
                 <span class="faq-icon-rotator" aria-hidden="true">+</span>
               </button>
-              <div class="faq-collapsible-body">
+              <div class="faq-collapsible-body" data-i18n="faq.a3">
                 Vous pouvez régler par Mobile Money (MTN MoMo, Moov Money, Wave, Celtiis, Orange Money) ainsi que par Carte Bancaire internationale (Visa, Mastercard) et cryptomonnaies via l'infrastructure sécurisée Chariow.
               </div>
             </div>
 
             <div class="faq-panel">
               <button class="faq-trigger-btn" aria-expanded="false">
-                <span>Puis-je lire le guide confortablement sur mon téléphone ?</span>
+                <span data-i18n="faq.q4">Puis-je lire le guide confortablement sur mon téléphone ?</span>
                 <span class="faq-icon-rotator" aria-hidden="true">+</span>
               </button>
-              <div class="faq-collapsible-body">
+              <div class="faq-collapsible-body" data-i18n="faq.a4">
                 Oui, le format PDF haute résolution a été optimisé pour une lecture agréable sur smartphone (iOS et Android), sur tablette ainsi que sur ordinateur.
               </div>
             </div>
@@ -684,10 +703,10 @@
           <img src="assets/logo.png" alt="Logo officiel LDB" width="40" height="40" style="border-radius: 8px;">
           <span class="brand-title-top" style="font-size: 1.15rem;">Les Dessous du Business</span>
         </div>
-        <p class="footer-motto">
+        <p class="footer-motto" data-i18n="footer.motto">
           « Comprendre. Progresser. Devenir meilleur. »
         </p>
-        <p class="footer-copyright">
+        <p class="footer-copyright" data-i18n="footer.copyright">
           © 2026 Les Dessous du Business. Tous droits réservés. Vente opérée via la plateforme sécurisée Chariow.
         </p>
       </div>
@@ -699,10 +718,10 @@
   <aside class="sticky-conversion-dock" aria-label="Commande rapide mobile">
     <div class="sticky-dock-inner">
       <div class="dock-price-meta">
-        <span class="dock-price-label">Offre Spéciale</span>
-        <span class="dock-price-amount">2 500 FCFA</span>
+        <span class="dock-price-label" data-i18n="dock.label">Offre Spéciale</span>
+        <span class="dock-price-amount" id="dockPriceAmount">2 500 FCFA</span>
       </div>
-      <a href="https://wyvmgyhr.mychariow.com/prd_vqzd2xnd?chw_campaign=SCROX9Q9UK&campaign=SCROX9Q9UK" class="btn-conversion btn-conversion-sm track-checkout-btn">
+      <a href="https://wyvmgyhr.mychariow.com/prd_vqzd2xnd?chw_campaign=SCROX9Q9UK&campaign=SCROX9Q9UK" class="btn-conversion btn-conversion-sm track-checkout-btn" id="dockCtaBtn" data-i18n="dock.cta">
         COMMANDER (2 500 F) →
       </a>
     </div>
