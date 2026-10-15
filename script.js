@@ -63,6 +63,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
+      // Envoi de l'événement de conversion begin_checkout à Google Analytics 4 (GA4)
+      if (typeof gtag === 'function') {
+        gtag('event', 'begin_checkout', {
+          currency: currentLang === 'en' ? 'USD' : 'XOF',
+          value: currentLang === 'en' ? 4.99 : 2500,
+          items: [{
+            item_id: 'prd_vqzd2xnd',
+            item_name: currentLang === 'en' 
+              ? 'Practical Guide: Speak in public with confidence' 
+              : 'Guide Pratique: Prends la parole avec assurance',
+            price: currentLang === 'en' ? 4.99 : 2500,
+            quantity: 1
+          }]
+        });
+      }
+
       // Redirection fluide vers Chariow avec la campagne affiliée
       setTimeout(() => {
         window.location.href = finalCheckoutUrl;
