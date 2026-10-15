@@ -5,12 +5,37 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const CHARIOW_PRODUCT_URL = 'https://wyvmgyhr.mychariow.com/prd_vqzd2xnd';
+  // Configuration du lien Chariow & suivi de campagne automatique
+  const DEFAULT_CAMPAIGN_CODE = 'SCROX9Q9UK';
+
+  function getChariowCheckoutUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const campaignCode = urlParams.get('chw_campaign') || urlParams.get('campaign') || DEFAULT_CAMPAIGN_CODE;
+    
+    const targetUrl = new URL('https://wyvmgyhr.mychariow.com/prd_vqzd2xnd');
+    targetUrl.searchParams.set('chw_campaign', campaignCode);
+    targetUrl.searchParams.set('campaign', campaignCode);
+
+    // Transmettre également les paramètres publicitaires (UTM, Facebook Click ID) s'ils existent
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'].forEach(param => {
+      const val = urlParams.get(param);
+      if (val) {
+        targetUrl.searchParams.set(param, val);
+      }
+    });
+
+    return targetUrl.toString();
+  }
+
+  const finalCheckoutUrl = getChariowCheckoutUrl();
 
   // 1. GESTION DU CLIC CTA AVEC TRACKING META PIXEL (InitiateCheckout)
   const ctaButtons = document.querySelectorAll('.track-checkout-btn');
 
   ctaButtons.forEach(btn => {
+    // Mettre à jour l'attribut href pour la sécurité et le fallback natif
+    btn.setAttribute('href', finalCheckoutUrl);
+
     btn.addEventListener('click', (e) => {
       e.preventDefault();
 
@@ -24,9 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      // Redirection fluide vers Chariow
+      // Redirection fluide vers Chariow avec la campagne de suivi
       setTimeout(() => {
-        window.location.href = CHARIOW_PRODUCT_URL;
+        window.location.href = finalCheckoutUrl;
       }, 200);
     });
   });
